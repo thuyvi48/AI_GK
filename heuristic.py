@@ -1,15 +1,14 @@
 class Heuristic:
-    def __init__(self, mode="misplaced"):
+    def __init__(self, mode="manhattan"):
         self.mode = mode
 
-    def evaluate(self, node, goal_state=None):
-        goal_state = goal_state or [[1,2,3],[4,5,6],[7,8,0]]
+    def evaluate(self, node, goal_state):
         if self.mode == "misplaced":
             return self._misplaced(node, goal_state)
         elif self.mode == "manhattan":
             return self._manhattan(node, goal_state)
         else:
-            raise ValueError("Heuristic mode không hợp lệ")
+            raise ValueError("Heuristic không hợp lệ")
 
     def _misplaced(self, node, goal):
         flat = [x for r in node.state for x in r]
