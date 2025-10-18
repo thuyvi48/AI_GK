@@ -29,7 +29,7 @@ class AStar:
             visited.add(s_key)
             expanded += 1
 
-            # ✅ Dừng khi đạt giới hạn n nút
+            # Dừng khi đạt giới hạn n nút
             if max_nodes is not None and expanded >= max_nodes:
                 return {
                     "method": "A*",

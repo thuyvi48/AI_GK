@@ -18,14 +18,14 @@ class Node:
                 new_state = [row[:] for row in self.state]
                 new_state[x][y], new_state[nx][ny] = new_state[nx][ny], new_state[x][y]
 
-                # 🧩 Luật 1: Tổng = 9 → cho phép thêm hoán vị đặc biệt
+                # Luật 1: Tổng = 9 → cho phép thêm hoán vị đặc biệt
                 if (self.state[x][y] + self.state[nx][ny]) == 9:
                     successors.append(Node(new_state, self, move=f"swap9 ({self.state[x][y]}↔{self.state[nx][ny]})"))
 
-                # 🧩 Luật chuẩn (di chuyển ô trống)
+                # Luật chuẩn (di chuyển ô trống)
                 successors.append(Node(new_state, self, move=f"move {self.state[nx][ny]}"))
 
-        # 🧩 Luật 2: hoán vị hai góc chéo
+        # Luật 2: hoán vị hai góc chéo
         corners = [(0, 0), (0, 2), (2, 0), (2, 2)]
         diagonal_pairs = [((0, 0), (2, 2)), ((0, 2), (2, 0))]
 

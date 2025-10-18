@@ -1,66 +1,29 @@
 from node import Node
 from heuristic import Heuristic
 from graphviz import Digraph
-from collections import deque
 from search_astar import AStar
 from search_bfs import BFS
-
+from collections import deque
 import time
 import random
-import copy
 
-# ==============================
-# BFS cơ bản (so sánh)
-# ==============================
-def bfs(start_node, goal_state, max_nodes=None):
-    visited = set()
-    queue = deque([start_node])
-    expanded = 0
-    start_time = time.time()
-
-    while queue:
-        node = queue.popleft()
-        expanded += 1
-
-        if max_nodes is not None and expanded >= max_nodes:
-            break
-
-        if node.state == goal_state:
-            elapsed = time.time() - start_time
-            return {"expanded": expanded, "time": elapsed}
-
-        visited.add(str(node.state))
-        for child in node.get_successors():
-            if str(child.state) not in visited:
-                queue.append(child)
-
-    elapsed = time.time() - start_time
-    return {"expanded": expanded, "time": elapsed}
-
-
-# ==============================
-# In ma trận trạng thái
 # ==============================
 def print_state(state):
     for row in state:
         print(" ".join(str(x) if x != 0 else "_" for x in row))
 
-
-# ==============================
-# Vẽ đường đi đỏ từ goal về start
-# ==============================
-def highlight_path(goal_node, dot):
+def highlight_path(goal_node, dot, limit=300):
     current = goal_node
-    while current.parent:
+    drawn = 0
+    while current.parent and drawn < limit:
         parent_id = str(current.parent.state)
         child_id = str(current.state)
         dot.edge(parent_id, child_id, color="red", penwidth="3")
         current = current.parent
+        drawn += 1
+    if drawn >= limit:
+        print(f"Only drew first {limit} steps of path to goal.")
 
-
-# ==============================
-# Kiểm tra trạng thái có thể giải được
-# ==============================
 def is_solvable(state):
     flat = [x for r in state for x in r if x != 0]
     inversions = 0
@@ -70,12 +33,7 @@ def is_solvable(state):
                 inversions += 1
     return inversions % 2 == 0
 
-
-# ==============================
-# Sinh trạng thái ngẫu nhiên có thể giải được
-# ==============================
 def random_state(goal):
-    """Sinh trạng thái ngẫu nhiên hợp lệ (có thể giải được)."""
     nums = [x for row in goal for x in row]
     while True:
         random.shuffle(nums)
@@ -83,58 +41,44 @@ def random_state(goal):
         if is_solvable(new_state):
             return new_state
 
+def bfs(start_node, goal_state, max_nodes=200):
+    visited = set()
+    queue = deque([start_node])
+    expanded = 0
+    start_time = time.time()
 
-# ==============================
-# Thí nghiệm ngẫu nhiên và đo time / space complexity
-# ==============================
-def experiment(goal_state, trials=5):
-    heuristics = ["misplaced", "manhattan"]
-    results = []
+    while queue:
+        node = queue.popleft()
+        expanded += 1
+        if expanded >= max_nodes:
+            break
+        if node.state == goal_state:
+            return {"expanded": expanded, "time": time.time() - start_time}
+        visited.add(str(node.state))
+        for child in node.get_successors():
+            if str(child.state) not in visited:
+                queue.append(child)
+    return {"expanded": expanded, "time": time.time() - start_time}
 
-    for i in range(trials):
-        start = random_state(goal_state)
-        print(f"\n🧩 Trial {i+1} | Start:")
-        print_state(start)
+def add_nodes_limited_iterative(root_node, dot, max_nodes=2000):
+    """
+    Thêm node và edge vào dot, giới hạn số node bằng BFS (không đệ quy)
+    """
+    drawn = 0
+    queue = deque([root_node])
 
-        # Chạy A* cho từng heuristic
-        for h in heuristics:
-            h_obj = Heuristic(h)
-            astar = AStar(h_obj, goal_state)
-            res = astar.search(Node(start))
-            results.append({
-                "method": f"A* ({h})",
-                "time": res["time"],
-                "expanded": res["expanded"]
-            })
-
-        # Chạy BFS (có giới hạn để tránh treo)
-        bfs_search = BFS(goal_state)
-        res = bfs_search.search(Node(start), record_tree=False)
-        results.append({
-            "method": "BFS",
-            "time": res["time"],
-            "expanded": res["expanded"]
-        })
-
-    # Tổng hợp kết quả trung bình
-    summary = {}
-    for r in results:
-        m = r["method"]
-        if m not in summary:
-            summary[m] = {"time": 0, "expanded": 0, "count": 0}
-        summary[m]["time"] += r["time"]
-        summary[m]["expanded"] += r["expanded"]
-        summary[m]["count"] += 1
-
-    print("\n📊 Average Results:")
-    for m, v in summary.items():
-        avg_time = v["time"] / v["count"]
-        avg_expanded = v["expanded"] / v["count"]
-        print(f"{m:<15} | Avg Time: {avg_time:.4f}s | Avg Expanded: {avg_expanded:.1f}")
+    while queue and drawn < max_nodes:
+        node = queue.popleft()
+        for child in node.get_successors():
+            parent_id = str(node.state)
+            child_id = str(child.state)
+            dot.edge(parent_id, child_id)
+            drawn += 1
+            if drawn >= max_nodes:
+                break
+            queue.append(child)
 
 
-# ==============================
-# Chương trình chính
 # ==============================
 def main():
     dot = Digraph(comment="Final A* Search Tree")
@@ -164,9 +108,7 @@ def main():
     heuristics = ["misplaced", "manhattan"]
 
     for cname, start_state in start_states.items():
-        start_node = Node(start_state)
-        print(f"\n=== {cname} ===")
-        print("\nInitial state:")
+        print(f"\n=== {cname} ===\nInitial state:")
         print_state(start_state)
 
         for gname, goal_state in goals.items():
@@ -174,47 +116,31 @@ def main():
             print_state(goal_state)
             print()
 
-            # A* Search
-            # ==============================
             for h in heuristics:
                 h_obj = Heuristic(h)
                 astar = AStar(h_obj, goal_state)
                 print(f"→ A* ({h})")
-                start_time = time.time()
-
-                # ⚙️ Tìm đến goal, KHÔNG dừng sớm
-                result = astar.search(Node(start_state), record_tree=True, dot=dot, max_nodes=None)
+                # record_tree=True để tạo cây, nhưng Graphviz sẽ không treo vì highlight limit
+                # A* search
+                result = astar.search(Node(start_state), record_tree=False)  # KHÔNG record toàn tree trực tiếp
                 goal_node = result.get("goal")
                 elapsed = result["time"]
 
                 if goal_node:
-                    print(f"✅ Goal found in {elapsed:.3f}s | Expanded: {result['expanded']}")
-                    # 🧩 Giới hạn số node được vẽ
-                    highlight_limit = 300
-                    current = goal_node
-                    drawn = 0
-                    while current.parent and drawn < highlight_limit:
-                        parent_id = str(current.parent.state)
-                        child_id = str(current.state)
-                        dot.edge(parent_id, child_id, color="red", penwidth="3")
-                        current = current.parent
-                        drawn += 1
-                    if drawn >= highlight_limit:
-                        print(f"⚠️ Only drew first {highlight_limit} steps of path to goal.")
+                    print(f"Goal found in {elapsed:.3f}s | Expanded: {result['expanded']}")
+                    # vẽ toàn bộ cây nhưng giới hạn số node
+                    add_nodes_limited_iterative(goal_node, dot, max_nodes=10)
+                    # highlight đường đi đỏ
+                    highlight_path(goal_node, dot, limit=300)
                 else:
-                    print(f"❌ Goal not found. Expanded: {result['expanded']}")
+                    print(f"Goal not found. Expanded: {result['expanded']}")
 
-
-            # BFS (so sánh, có giới hạn)
-            bfs_result = bfs(Node(start_state), goal_state, max_nodes=2000)
-            print(f"→ BFS (for comparison)")
-            print(f"BFS expanded: {bfs_result['expanded']} | Time: {bfs_result['time']:.3f}s")
+            # BFS so sánh
+            bfs_res = bfs(Node(start_state), goal_state, max_nodes=200)
+            print(f"→ BFS (limited) | Expanded: {bfs_res['expanded']} | Time: {bfs_res['time']:.3f}s")
 
     dot.render("Final_Search_Tree", format='png', view=False)
-    print("\n✅ Search tree has been saved as 'Final_Search_Tree.png'")
-
-    print("\n=== RANDOMIZED EXPERIMENTS ===")
-    experiment(goals["G1"], trials=3)
+    print("\nFinal search tree saved as 'Final_Search_Tree.png'")
 
 if __name__ == "__main__":
     main()
