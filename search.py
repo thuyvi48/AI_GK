@@ -47,7 +47,7 @@ class AStarSearch:
                 # --- Gọi hàm tái tạo đường đi ---
                 path = self._reconstruct_path(current)
                 print("Path length (steps):", len(path) - 1)
-                print("==== PATH FROM START TO GOAL ====")
+                print("PATH FROM START TO GOAL")
                 for n in path:
                     print(n)
                     print("-------------------------")
