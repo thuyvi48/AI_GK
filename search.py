@@ -19,9 +19,8 @@ class AStarSearch:
         return list(reversed(path))
 
     def search(self, start_node, record_tree=False, dot=None):
-        """Tìm kiếm A* và ghi vào Graphviz nếu có"""
         open_list = []
-        counter = itertools.count()  # Bộ đếm duy nhất để tránh lỗi so sánh Node
+        counter = itertools.count()  
         g_cost = {str(start_node.state): 0}
         f_cost = {str(start_node.state): self.heuristic.evaluate(start_node, self.goal_state)}
 
@@ -43,7 +42,6 @@ class AStarSearch:
             if self.__is_goal(current):
                 print("Goal reached!")
                 
-                # --- Gọi hàm tái tạo đường đi ---
                 path = self.__reconstruct_path(current)
                 print("Path length (steps):", len(path) - 1)
                 print(" PATH FROM START TO GOAL ")
@@ -60,7 +58,7 @@ class AStarSearch:
                 if c_key not in g_cost or g_new < g_cost[c_key]:
                     g_cost[c_key] = g_new
                     f_cost[c_key] = g_new + self.heuristic.evaluate(child, self.goal_state)
-                    heappush(open_list, (f_cost[c_key], next(counter), child))  # thêm counter
+                    heappush(open_list, (f_cost[c_key], next(counter), child)) 
                     if record_tree and dot is not None:
                         child.draw(dot)
         return {"expanded": expanded, "generated": generated}
