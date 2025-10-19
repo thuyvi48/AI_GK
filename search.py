@@ -7,10 +7,10 @@ class AStarSearch:
         self.heuristic = heuristic
         self.goal_state = goal_state
 
-    def is_goal(self, node):
+    def __is_goal(self, node):
         return node.state == self.goal_state
 
-    def _reconstruct_path(self, node):
+    def __reconstruct_path(self, node):
         path = []
         cur = node
         while cur is not None:
@@ -39,18 +39,16 @@ class AStarSearch:
             if s_key in visited:
                 continue
             visited.add(s_key)
-            expanded += 1
-
-            if self.is_goal(current):
+            expanded += 1   
+            if self.__is_goal(current):
                 print("Goal reached!")
                 
                 # --- Gọi hàm tái tạo đường đi ---
-                path = self._reconstruct_path(current)
+                path = self.__reconstruct_path(current)
                 print("Path length (steps):", len(path) - 1)
-                print("PATH FROM START TO GOAL")
+                print(" PATH FROM START TO GOAL ")
                 for n in path:
                     print(n)
-                    print("-------------------------")
                 
                 return {"expanded": expanded, "generated": generated}
 

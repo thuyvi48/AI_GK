@@ -1,1040 +1,1020 @@
-// Final A* Search Tree
+// A* Search Tree (All Heuristics)
 digraph {
 	fontsize=10 rankdir=TB size="10,8"
 	node_1 [label="134
 862
 7_5"]
-	node_2 [label="834
+	node_7308 [label="834
 162
 7_5"]
-	node_1 -> node_2 [label="swap(1,8)"]
-	node_3 [label="164
+	node_1 -> node_7308 [label="swap(1,8)"]
+	node_7309 [label="164
 832
 7_5"]
-	node_1 -> node_3 [label="swap(3,6)"]
-	node_6 [label="534
+	node_1 -> node_7309 [label="swap(3,6)"]
+	node_7312 [label="534
 862
 7_1"]
-	node_1 -> node_6 [label="corner(1,5)"]
-	node_7 [label="137
+	node_1 -> node_7312 [label="corner(1,5)"]
+	node_7313 [label="137
 862
 4_5"]
-	node_1 -> node_7 [label="corner(4,7)"]
-	node_8 [label="864
+	node_1 -> node_7313 [label="corner(4,7)"]
+	node_7314 [label="864
 132
 7_5"]
-	node_3 -> node_8 [label="swap(1,8)"]
-	node_12 [label="564
+	node_7309 -> node_7314 [label="swap(1,8)"]
+	node_7318 [label="564
 832
 7_1"]
-	node_3 -> node_12 [label="corner(1,5)"]
-	node_13 [label="167
+	node_7309 -> node_7318 [label="corner(1,5)"]
+	node_7319 [label="167
 832
 4_5"]
-	node_3 -> node_13 [label="corner(4,7)"]
-	node_18 [label="534
+	node_7309 -> node_7319 [label="corner(4,7)"]
+	node_7324 [label="534
 162
 7_8"]
-	node_2 -> node_18 [label="corner(8,5)"]
-	node_19 [label="837
+	node_7308 -> node_7324 [label="corner(8,5)"]
+	node_7325 [label="837
 162
 4_5"]
-	node_2 -> node_19 [label="corner(4,7)"]
-	node_23 [label="537
+	node_7308 -> node_7325 [label="corner(4,7)"]
+	node_7329 [label="537
 862
 4_1"]
-	node_6 -> node_23 [label="corner(4,7)"]
-	node_26 [label="132
+	node_7312 -> node_7329 [label="corner(4,7)"]
+	node_7332 [label="132
 867
 4_5"]
-	node_7 -> node_26 [label="swap(7,2)"]
-	node_36 [label="564
+	node_7313 -> node_7332 [label="swap(7,2)"]
+	node_7342 [label="564
 132
 7_8"]
-	node_8 -> node_36 [label="corner(8,5)"]
-	node_37 [label="867
+	node_7314 -> node_7342 [label="corner(8,5)"]
+	node_7343 [label="867
 132
 4_5"]
-	node_8 -> node_37 [label="corner(4,7)"]
-	node_41 [label="567
+	node_7314 -> node_7343 [label="corner(4,7)"]
+	node_7347 [label="567
 832
 4_1"]
-	node_12 -> node_41 [label="corner(4,7)"]
-	node_44 [label="162
+	node_7318 -> node_7347 [label="corner(4,7)"]
+	node_7350 [label="162
 837
 4_5"]
-	node_13 -> node_44 [label="swap(7,2)"]
-	node_53 [label="537
+	node_7319 -> node_7350 [label="swap(7,2)"]
+	node_7359 [label="537
 162
 4_8"]
-	node_18 -> node_53 [label="corner(4,7)"]
-	node_54 [label="832
+	node_7324 -> node_7359 [label="corner(4,7)"]
+	node_7360 [label="832
 167
 4_5"]
-	node_26 -> node_54 [label="swap(1,8)"]
-	node_60 [label="532
+	node_7332 -> node_7360 [label="swap(1,8)"]
+	node_7366 [label="532
 867
 4_1"]
-	node_26 -> node_60 [label="corner(1,5)"]
-	node_61 [label="134
+	node_7332 -> node_7366 [label="corner(1,5)"]
+	node_7367 [label="134
 867
 2_5"]
-	node_26 -> node_61 [label="corner(2,4)"]
-	node_79 [label="567
+	node_7332 -> node_7367 [label="corner(2,4)"]
+	node_7385 [label="567
 132
 4_8"]
-	node_36 -> node_79 [label="corner(4,7)"]
-	node_80 [label="862
+	node_7342 -> node_7385 [label="corner(4,7)"]
+	node_7386 [label="862
 137
 4_5"]
-	node_44 -> node_80 [label="swap(1,8)"]
-	node_86 [label="562
+	node_7350 -> node_7386 [label="swap(1,8)"]
+	node_7392 [label="562
 837
 4_1"]
-	node_44 -> node_86 [label="corner(1,5)"]
-	node_87 [label="164
+	node_7350 -> node_7392 [label="corner(1,5)"]
+	node_7393 [label="164
 837
 2_5"]
-	node_44 -> node_87 [label="corner(2,4)"]
-	node_88 [label="834
+	node_7350 -> node_7393 [label="corner(2,4)"]
+	node_7394 [label="834
 167
 2_5"]
-	node_61 -> node_88 [label="swap(1,8)"]
-	node_92 [label="534
+	node_7367 -> node_7394 [label="swap(1,8)"]
+	node_7398 [label="534
 867
 2_1"]
-	node_61 -> node_92 [label="corner(1,5)"]
-	node_109 [label="532
+	node_7367 -> node_7398 [label="corner(1,5)"]
+	node_7415 [label="532
 167
 4_8"]
-	node_53 -> node_109 [label="swap(7,2)"]
-	node_128 [label="864
+	node_7359 -> node_7415 [label="swap(7,2)"]
+	node_7434 [label="864
 137
 2_5"]
-	node_87 -> node_128 [label="swap(1,8)"]
-	node_132 [label="564
+	node_7393 -> node_7434 [label="swap(1,8)"]
+	node_7438 [label="564
 837
 2_1"]
-	node_87 -> node_132 [label="corner(1,5)"]
-	node_135 [label="562
+	node_7393 -> node_7438 [label="corner(1,5)"]
+	node_7441 [label="562
 137
 4_8"]
-	node_79 -> node_135 [label="swap(7,2)"]
-	node_158 [label="534
+	node_7385 -> node_7441 [label="swap(7,2)"]
+	node_7464 [label="534
 167
 2_8"]
-	node_88 -> node_158 [label="corner(8,5)"]
-	node_174 [label="564
+	node_7394 -> node_7464 [label="corner(8,5)"]
+	node_7480 [label="564
 137
 2_8"]
-	node_128 -> node_174 [label="corner(8,5)"]
+	node_7434 -> node_7480 [label="corner(8,5)"]
 	node_1 [label="134
 862
 7_5"]
-	node_194 [label="834
+	node_7500 [label="834
 162
 7_5"]
-	node_1 -> node_194 [label="swap(1,8)"]
-	node_195 [label="164
+	node_1 -> node_7500 [label="swap(1,8)"]
+	node_7501 [label="164
 832
 7_5"]
-	node_1 -> node_195 [label="swap(3,6)"]
-	node_198 [label="534
+	node_1 -> node_7501 [label="swap(3,6)"]
+	node_7504 [label="534
 862
 7_1"]
-	node_1 -> node_198 [label="corner(1,5)"]
-	node_199 [label="137
+	node_1 -> node_7504 [label="corner(1,5)"]
+	node_7505 [label="137
 862
 4_5"]
-	node_1 -> node_199 [label="corner(4,7)"]
-	node_201 [label="864
+	node_1 -> node_7505 [label="corner(4,7)"]
+	node_7507 [label="864
 132
 7_5"]
-	node_194 -> node_201 [label="swap(3,6)"]
-	node_204 [label="534
+	node_7500 -> node_7507 [label="swap(3,6)"]
+	node_7510 [label="534
 162
 7_8"]
-	node_194 -> node_204 [label="corner(8,5)"]
-	node_205 [label="837
+	node_7500 -> node_7510 [label="corner(8,5)"]
+	node_7511 [label="837
 162
 4_5"]
-	node_194 -> node_205 [label="corner(4,7)"]
-	node_210 [label="564
+	node_7500 -> node_7511 [label="corner(4,7)"]
+	node_7516 [label="564
 832
 7_1"]
-	node_195 -> node_210 [label="corner(1,5)"]
-	node_211 [label="167
+	node_7501 -> node_7516 [label="corner(1,5)"]
+	node_7517 [label="167
 832
 4_5"]
-	node_195 -> node_211 [label="corner(4,7)"]
-	node_214 [label="132
+	node_7501 -> node_7517 [label="corner(4,7)"]
+	node_7520 [label="132
 867
 4_5"]
-	node_199 -> node_214 [label="swap(7,2)"]
-	node_218 [label="537
+	node_7505 -> node_7520 [label="swap(7,2)"]
+	node_7524 [label="537
 862
 4_1"]
-	node_199 -> node_218 [label="corner(1,5)"]
-	node_220 [label="564
+	node_7505 -> node_7524 [label="corner(1,5)"]
+	node_7530 [label="564
 132
 7_8"]
-	node_204 -> node_220 [label="swap(3,6)"]
-	node_223 [label="537
+	node_7510 -> node_7530 [label="swap(3,6)"]
+	node_7533 [label="537
 162
 4_8"]
-	node_204 -> node_223 [label="corner(4,7)"]
-	node_224 [label="832
+	node_7510 -> node_7533 [label="corner(4,7)"]
+	node_7534 [label="832
 167
 4_5"]
-	node_214 -> node_224 [label="swap(1,8)"]
-	node_225 [label="162
+	node_7520 -> node_7534 [label="swap(1,8)"]
+	node_7535 [label="162
 837
 4_5"]
-	node_214 -> node_225 [label="swap(3,6)"]
-	node_230 [label="532
+	node_7520 -> node_7535 [label="swap(3,6)"]
+	node_7540 [label="532
 867
 4_1"]
-	node_214 -> node_230 [label="corner(1,5)"]
-	node_231 [label="134
+	node_7520 -> node_7540 [label="corner(1,5)"]
+	node_7541 [label="134
 867
 2_5"]
-	node_214 -> node_231 [label="corner(2,4)"]
-	node_241 [label="867
+	node_7520 -> node_7541 [label="corner(2,4)"]
+	node_7547 [label="867
 132
 4_5"]
-	node_201 -> node_241 [label="corner(4,7)"]
-	node_256 [label="567
+	node_7507 -> node_7547 [label="corner(4,7)"]
+	node_7562 [label="567
 832
 4_1"]
-	node_211 -> node_256 [label="corner(1,5)"]
-	node_261 [label="567
+	node_7517 -> node_7562 [label="corner(1,5)"]
+	node_7577 [label="567
 132
 4_8"]
-	node_220 -> node_261 [label="corner(4,7)"]
-	node_263 [label="532
+	node_7530 -> node_7577 [label="corner(4,7)"]
+	node_7579 [label="532
 167
 4_8"]
-	node_223 -> node_263 [label="swap(7,2)"]
-	node_269 [label="862
+	node_7533 -> node_7579 [label="swap(7,2)"]
+	node_7585 [label="862
 137
 4_5"]
-	node_224 -> node_269 [label="swap(3,6)"]
-	node_275 [label="834
+	node_7534 -> node_7585 [label="swap(3,6)"]
+	node_7591 [label="834
 167
 2_5"]
-	node_224 -> node_275 [label="corner(2,4)"]
-	node_282 [label="562
+	node_7534 -> node_7591 [label="corner(2,4)"]
+	node_7598 [label="562
 837
 4_1"]
-	node_225 -> node_282 [label="corner(1,5)"]
-	node_283 [label="164
+	node_7535 -> node_7598 [label="corner(1,5)"]
+	node_7599 [label="164
 837
 2_5"]
-	node_225 -> node_283 [label="corner(2,4)"]
-	node_284 [label="562
-137
-4_8"]
-	node_263 -> node_284 [label="swap(3,6)"]
-	node_289 [label="534
-167
-2_8"]
-	node_263 -> node_289 [label="corner(2,4)"]
-	node_305 [label="534
+	node_7535 -> node_7599 [label="corner(2,4)"]
+	node_7605 [label="534
 867
 2_1"]
-	node_230 -> node_305 [label="corner(2,4)"]
-	node_333 [label="864
+	node_7540 -> node_7605 [label="corner(2,4)"]
+	node_7626 [label="562
+137
+4_8"]
+	node_7579 -> node_7626 [label="swap(3,6)"]
+	node_7631 [label="534
+167
+2_8"]
+	node_7579 -> node_7631 [label="corner(2,4)"]
+	node_7645 [label="864
 137
 2_5"]
-	node_269 -> node_333 [label="corner(2,4)"]
-	node_339 [label="564
-137
-2_8"]
-	node_284 -> node_339 [label="corner(2,4)"]
-	node_357 [label="564
+	node_7585 -> node_7645 [label="corner(2,4)"]
+	node_7657 [label="564
 837
 2_1"]
-	node_282 -> node_357 [label="corner(2,4)"]
+	node_7598 -> node_7657 [label="corner(2,4)"]
+	node_7673 [label="564
+137
+2_8"]
+	node_7626 -> node_7673 [label="corner(2,4)"]
 	node_1 [label="134
 862
 7_5"]
-	node_7692 [label="834
+	node_14998 [label="834
 162
 7_5"]
-	node_1 -> node_7692 [label="swap(1,8)"]
-	node_7693 [label="164
+	node_1 -> node_14998 [label="swap(1,8)"]
+	node_14999 [label="164
 832
 7_5"]
-	node_1 -> node_7693 [label="swap(3,6)"]
-	node_7696 [label="534
+	node_1 -> node_14999 [label="swap(3,6)"]
+	node_15002 [label="534
 862
 7_1"]
-	node_1 -> node_7696 [label="corner(1,5)"]
-	node_7697 [label="137
+	node_1 -> node_15002 [label="corner(1,5)"]
+	node_15003 [label="137
 862
 4_5"]
-	node_1 -> node_7697 [label="corner(4,7)"]
-	node_7699 [label="864
+	node_1 -> node_15003 [label="corner(4,7)"]
+	node_15005 [label="864
 132
 7_5"]
-	node_7692 -> node_7699 [label="swap(3,6)"]
-	node_7702 [label="534
+	node_14998 -> node_15005 [label="swap(3,6)"]
+	node_15008 [label="534
 162
 7_8"]
-	node_7692 -> node_7702 [label="corner(8,5)"]
-	node_7703 [label="837
+	node_14998 -> node_15008 [label="corner(8,5)"]
+	node_15009 [label="837
 162
 4_5"]
-	node_7692 -> node_7703 [label="corner(4,7)"]
-	node_7708 [label="564
+	node_14998 -> node_15009 [label="corner(4,7)"]
+	node_15014 [label="564
 832
 7_1"]
-	node_7693 -> node_7708 [label="corner(1,5)"]
-	node_7709 [label="167
+	node_14999 -> node_15014 [label="corner(1,5)"]
+	node_15015 [label="167
 832
 4_5"]
-	node_7693 -> node_7709 [label="corner(4,7)"]
-	node_7713 [label="537
+	node_14999 -> node_15015 [label="corner(4,7)"]
+	node_15019 [label="537
 862
 4_1"]
-	node_7696 -> node_7713 [label="corner(4,7)"]
-	node_7716 [label="132
+	node_15002 -> node_15019 [label="corner(4,7)"]
+	node_15022 [label="132
 867
 4_5"]
-	node_7697 -> node_7716 [label="swap(7,2)"]
-	node_7726 [label="564
+	node_15003 -> node_15022 [label="swap(7,2)"]
+	node_15032 [label="564
 132
 7_8"]
-	node_7699 -> node_7726 [label="corner(8,5)"]
-	node_7727 [label="867
+	node_15005 -> node_15032 [label="corner(8,5)"]
+	node_15033 [label="867
 132
 4_5"]
-	node_7699 -> node_7727 [label="corner(4,7)"]
-	node_7730 [label="832
+	node_15005 -> node_15033 [label="corner(4,7)"]
+	node_15036 [label="832
 167
 4_5"]
-	node_7703 -> node_7730 [label="swap(7,2)"]
-	node_7734 [label="537
+	node_15009 -> node_15036 [label="swap(7,2)"]
+	node_15040 [label="537
 162
 4_8"]
-	node_7703 -> node_7734 [label="corner(8,5)"]
-	node_7743 [label="567
+	node_15009 -> node_15040 [label="corner(8,5)"]
+	node_15049 [label="567
 832
 4_1"]
-	node_7708 -> node_7743 [label="corner(4,7)"]
-	node_7746 [label="162
+	node_15014 -> node_15049 [label="corner(4,7)"]
+	node_15052 [label="162
 837
 4_5"]
-	node_7709 -> node_7746 [label="swap(7,2)"]
-	node_7753 [label="532
+	node_15015 -> node_15052 [label="swap(7,2)"]
+	node_15059 [label="532
 867
 4_1"]
-	node_7713 -> node_7753 [label="swap(7,2)"]
-	node_7765 [label="134
+	node_15019 -> node_15059 [label="swap(7,2)"]
+	node_15071 [label="134
 867
 2_5"]
-	node_7716 -> node_7765 [label="corner(2,4)"]
-	node_7768 [label="862
+	node_15022 -> node_15071 [label="corner(2,4)"]
+	node_15074 [label="862
 137
 4_5"]
-	node_7727 -> node_7768 [label="swap(7,2)"]
-	node_7772 [label="567
+	node_15033 -> node_15074 [label="swap(7,2)"]
+	node_15078 [label="567
 132
 4_8"]
-	node_7727 -> node_7772 [label="corner(8,5)"]
-	node_7780 [label="532
+	node_15033 -> node_15078 [label="corner(8,5)"]
+	node_15086 [label="532
 167
 4_8"]
-	node_7730 -> node_7780 [label="corner(8,5)"]
-	node_7781 [label="834
+	node_15036 -> node_15086 [label="corner(8,5)"]
+	node_15087 [label="834
 167
 2_5"]
-	node_7730 -> node_7781 [label="corner(2,4)"]
-	node_7783 [label="164
+	node_15036 -> node_15087 [label="corner(2,4)"]
+	node_15089 [label="164
 837
 2_5"]
-	node_7765 -> node_7783 [label="swap(3,6)"]
-	node_7786 [label="534
+	node_15071 -> node_15089 [label="swap(3,6)"]
+	node_15092 [label="534
 867
 2_1"]
-	node_7765 -> node_7786 [label="corner(1,5)"]
-	node_7789 [label="864
+	node_15071 -> node_15092 [label="corner(1,5)"]
+	node_15095 [label="864
 137
 2_5"]
-	node_7781 -> node_7789 [label="swap(3,6)"]
-	node_7792 [label="534
+	node_15087 -> node_15095 [label="swap(3,6)"]
+	node_15098 [label="534
 167
 2_8"]
-	node_7781 -> node_7792 [label="corner(8,5)"]
-	node_7805 [label="562
+	node_15087 -> node_15098 [label="corner(8,5)"]
+	node_15111 [label="562
 837
 4_1"]
-	node_7743 -> node_7805 [label="swap(7,2)"]
-	node_7830 [label="562
+	node_15049 -> node_15111 [label="swap(7,2)"]
+	node_15136 [label="562
 137
 4_8"]
-	node_7768 -> node_7830 [label="corner(8,5)"]
-	node_7836 [label="564
+	node_15074 -> node_15136 [label="corner(8,5)"]
+	node_15142 [label="564
 837
 2_1"]
-	node_7783 -> node_7836 [label="corner(1,5)"]
-	node_7846 [label="564
+	node_15089 -> node_15142 [label="corner(1,5)"]
+	node_15152 [label="564
 137
 2_8"]
-	node_7789 -> node_7846 [label="corner(8,5)"]
+	node_15095 -> node_15152 [label="corner(8,5)"]
 	node_1 [label="134
 862
 7_5"]
-	node_7884 [label="834
+	node_15190 [label="834
 162
 7_5"]
-	node_1 -> node_7884 [label="swap(1,8)"]
-	node_7885 [label="164
+	node_1 -> node_15190 [label="swap(1,8)"]
+	node_15191 [label="164
 832
 7_5"]
-	node_1 -> node_7885 [label="swap(3,6)"]
-	node_7888 [label="534
+	node_1 -> node_15191 [label="swap(3,6)"]
+	node_15194 [label="534
 862
 7_1"]
-	node_1 -> node_7888 [label="corner(1,5)"]
-	node_7889 [label="137
+	node_1 -> node_15194 [label="corner(1,5)"]
+	node_15195 [label="137
 862
 4_5"]
-	node_1 -> node_7889 [label="corner(4,7)"]
-	node_7890 [label="564
+	node_1 -> node_15195 [label="corner(4,7)"]
+	node_15196 [label="564
 832
 7_1"]
-	node_7888 -> node_7890 [label="swap(3,6)"]
-	node_7893 [label="537
+	node_15194 -> node_15196 [label="swap(3,6)"]
+	node_15199 [label="537
 862
 4_1"]
-	node_7888 -> node_7893 [label="corner(4,7)"]
-	node_7897 [label="567
-832
-4_1"]
-	node_7890 -> node_7897 [label="corner(4,7)"]
-	node_7899 [label="532
-867
-4_1"]
-	node_7893 -> node_7899 [label="swap(7,2)"]
-	node_7905 [label="562
-837
-4_1"]
-	node_7897 -> node_7905 [label="swap(7,2)"]
-	node_7908 [label="167
-832
-4_5"]
-	node_7897 -> node_7908 [label="corner(5,1)"]
-	node_7911 [label="864
+	node_15194 -> node_15199 [label="corner(4,7)"]
+	node_15201 [label="864
 132
 7_5"]
-	node_7884 -> node_7911 [label="swap(3,6)"]
-	node_7914 [label="534
+	node_15190 -> node_15201 [label="swap(3,6)"]
+	node_15204 [label="534
 162
 7_8"]
-	node_7884 -> node_7914 [label="corner(8,5)"]
-	node_7915 [label="837
+	node_15190 -> node_15204 [label="corner(8,5)"]
+	node_15205 [label="837
 162
 4_5"]
-	node_7884 -> node_7915 [label="corner(4,7)"]
-	node_7921 [label="167
+	node_15190 -> node_15205 [label="corner(4,7)"]
+	node_15211 [label="167
 832
 4_5"]
-	node_7885 -> node_7921 [label="corner(4,7)"]
-	node_7924 [label="132
+	node_15191 -> node_15211 [label="corner(4,7)"]
+	node_15214 [label="132
 867
 4_5"]
-	node_7889 -> node_7924 [label="swap(7,2)"]
-	node_7934 [label="564
+	node_15195 -> node_15214 [label="swap(7,2)"]
+	node_15223 [label="567
+832
+4_1"]
+	node_15196 -> node_15223 [label="corner(4,7)"]
+	node_15225 [label="532
+867
+4_1"]
+	node_15199 -> node_15225 [label="swap(7,2)"]
+	node_15234 [label="564
 132
 7_8"]
-	node_7911 -> node_7934 [label="corner(8,5)"]
-	node_7935 [label="867
+	node_15201 -> node_15234 [label="corner(8,5)"]
+	node_15235 [label="867
 132
 4_5"]
-	node_7911 -> node_7935 [label="corner(4,7)"]
-	node_7938 [label="832
+	node_15201 -> node_15235 [label="corner(4,7)"]
+	node_15238 [label="832
 167
 4_5"]
-	node_7915 -> node_7938 [label="swap(7,2)"]
-	node_7942 [label="537
+	node_15205 -> node_15238 [label="swap(7,2)"]
+	node_15242 [label="537
 162
 4_8"]
-	node_7915 -> node_7942 [label="corner(8,5)"]
-	node_7946 [label="162
+	node_15205 -> node_15242 [label="corner(8,5)"]
+	node_15246 [label="162
 837
 4_5"]
-	node_7921 -> node_7946 [label="swap(7,2)"]
-	node_7954 [label="862
+	node_15211 -> node_15246 [label="swap(7,2)"]
+	node_15263 [label="134
+867
+2_5"]
+	node_15214 -> node_15263 [label="corner(2,4)"]
+	node_15265 [label="562
+837
+4_1"]
+	node_15223 -> node_15265 [label="swap(7,2)"]
+	node_15272 [label="862
 137
 4_5"]
-	node_7935 -> node_7954 [label="swap(7,2)"]
-	node_7958 [label="567
+	node_15235 -> node_15272 [label="swap(7,2)"]
+	node_15276 [label="567
 132
 4_8"]
-	node_7935 -> node_7958 [label="corner(8,5)"]
-	node_7965 [label="534
+	node_15235 -> node_15276 [label="corner(8,5)"]
+	node_15283 [label="534
 867
 2_1"]
-	node_7899 -> node_7965 [label="corner(2,4)"]
-	node_7966 [label="564
+	node_15225 -> node_15283 [label="corner(2,4)"]
+	node_15284 [label="834
+167
+2_5"]
+	node_15263 -> node_15284 [label="swap(1,8)"]
+	node_15285 [label="164
+837
+2_5"]
+	node_15263 -> node_15285 [label="swap(3,6)"]
+	node_15300 [label="532
+167
+4_8"]
+	node_15238 -> node_15300 [label="corner(8,5)"]
+	node_15316 [label="564
 837
 2_1"]
-	node_7965 -> node_7966 [label="swap(3,6)"]
-	node_7968 [label="134
-867
-2_5"]
-	node_7965 -> node_7968 [label="corner(5,1)"]
-	node_7972 [label="164
-837
-2_5"]
-	node_7966 -> node_7972 [label="corner(5,1)"]
-	node_7991 [label="134
-867
-2_5"]
-	node_7924 -> node_7991 [label="corner(2,4)"]
-	node_7992 [label="834
-167
-2_5"]
-	node_7991 -> node_7992 [label="swap(1,8)"]
-	node_7993 [label="164
-837
-2_5"]
-	node_7991 -> node_7993 [label="swap(3,6)"]
-	node_7999 [label="864
+	node_15283 -> node_15316 [label="swap(3,6)"]
+	node_15327 [label="864
 137
 2_5"]
-	node_7992 -> node_7999 [label="swap(3,6)"]
-	node_8002 [label="534
+	node_15284 -> node_15327 [label="swap(3,6)"]
+	node_15330 [label="534
 167
 2_8"]
-	node_7992 -> node_8002 [label="corner(8,5)"]
-	node_8014 [label="564
+	node_15284 -> node_15330 [label="corner(8,5)"]
+	node_15344 [label="562
+137
+4_8"]
+	node_15272 -> node_15344 [label="corner(8,5)"]
+	node_15366 [label="564
 137
 2_8"]
-	node_7999 -> node_8014 [label="corner(8,5)"]
-	node_8026 [label="532
-167
-4_8"]
-	node_7938 -> node_8026 [label="corner(8,5)"]
-	node_8048 [label="562
-137
-4_8"]
-	node_7954 -> node_8048 [label="corner(8,5)"]
+	node_15327 -> node_15366 [label="corner(8,5)"]
 	node_1 [label="134
 862
 7_5"]
-	node_15382 [label="834
+	node_22688 [label="834
 162
 7_5"]
-	node_1 -> node_15382 [label="swap(1,8)"]
-	node_15383 [label="164
+	node_1 -> node_22688 [label="swap(1,8)"]
+	node_22689 [label="164
 832
 7_5"]
-	node_1 -> node_15383 [label="swap(3,6)"]
-	node_15386 [label="534
+	node_1 -> node_22689 [label="swap(3,6)"]
+	node_22692 [label="534
 862
 7_1"]
-	node_1 -> node_15386 [label="corner(1,5)"]
-	node_15387 [label="137
+	node_1 -> node_22692 [label="corner(1,5)"]
+	node_22693 [label="137
 862
 4_5"]
-	node_1 -> node_15387 [label="corner(4,7)"]
-	node_15388 [label="864
+	node_1 -> node_22693 [label="corner(4,7)"]
+	node_22694 [label="864
 132
 7_5"]
-	node_15383 -> node_15388 [label="swap(1,8)"]
-	node_15392 [label="564
+	node_22689 -> node_22694 [label="swap(1,8)"]
+	node_22698 [label="564
 832
 7_1"]
-	node_15383 -> node_15392 [label="corner(1,5)"]
-	node_15393 [label="167
+	node_22689 -> node_22698 [label="corner(1,5)"]
+	node_22699 [label="167
 832
 4_5"]
-	node_15383 -> node_15393 [label="corner(4,7)"]
-	node_15394 [label="837
+	node_22689 -> node_22699 [label="corner(4,7)"]
+	node_22700 [label="837
 162
 4_5"]
-	node_15387 -> node_15394 [label="swap(1,8)"]
-	node_15396 [label="132
+	node_22693 -> node_22700 [label="swap(1,8)"]
+	node_22702 [label="132
 867
 4_5"]
-	node_15387 -> node_15396 [label="swap(7,2)"]
-	node_15400 [label="537
+	node_22693 -> node_22702 [label="swap(7,2)"]
+	node_22706 [label="537
 862
 4_1"]
-	node_15387 -> node_15400 [label="corner(1,5)"]
-	node_15406 [label="534
+	node_22693 -> node_22706 [label="corner(1,5)"]
+	node_22712 [label="534
 162
 7_8"]
-	node_15382 -> node_15406 [label="corner(8,5)"]
-	node_15412 [label="867
+	node_22688 -> node_22712 [label="corner(8,5)"]
+	node_22718 [label="867
 132
 4_5"]
-	node_15393 -> node_15412 [label="swap(1,8)"]
-	node_15414 [label="162
+	node_22699 -> node_22718 [label="swap(1,8)"]
+	node_22720 [label="162
 837
 4_5"]
-	node_15393 -> node_15414 [label="swap(7,2)"]
-	node_15418 [label="567
+	node_22699 -> node_22720 [label="swap(7,2)"]
+	node_22724 [label="567
 832
 4_1"]
-	node_15393 -> node_15418 [label="corner(1,5)"]
-	node_15420 [label="832
+	node_22699 -> node_22724 [label="corner(1,5)"]
+	node_22726 [label="832
 167
 4_5"]
-	node_15396 -> node_15420 [label="swap(1,8)"]
-	node_15426 [label="532
+	node_22702 -> node_22726 [label="swap(1,8)"]
+	node_22732 [label="532
 867
 4_1"]
-	node_15396 -> node_15426 [label="corner(1,5)"]
-	node_15427 [label="134
+	node_22702 -> node_22732 [label="corner(1,5)"]
+	node_22733 [label="134
 867
 2_5"]
-	node_15396 -> node_15427 [label="corner(2,4)"]
-	node_15428 [label="564
+	node_22702 -> node_22733 [label="corner(2,4)"]
+	node_22734 [label="564
 132
 7_8"]
-	node_15406 -> node_15428 [label="swap(3,6)"]
-	node_15431 [label="537
+	node_22712 -> node_22734 [label="swap(3,6)"]
+	node_22737 [label="537
 162
 4_8"]
-	node_15406 -> node_15431 [label="corner(4,7)"]
-	node_15456 [label="862
+	node_22712 -> node_22737 [label="corner(4,7)"]
+	node_22762 [label="862
 137
 4_5"]
-	node_15414 -> node_15456 [label="swap(1,8)"]
-	node_15462 [label="562
+	node_22720 -> node_22762 [label="swap(1,8)"]
+	node_22768 [label="562
 837
 4_1"]
-	node_15414 -> node_15462 [label="corner(1,5)"]
-	node_15463 [label="164
+	node_22720 -> node_22768 [label="corner(1,5)"]
+	node_22769 [label="164
 837
 2_5"]
-	node_15414 -> node_15463 [label="corner(2,4)"]
-	node_15464 [label="834
+	node_22720 -> node_22769 [label="corner(2,4)"]
+	node_22770 [label="834
 167
 2_5"]
-	node_15427 -> node_15464 [label="swap(1,8)"]
-	node_15468 [label="534
+	node_22733 -> node_22770 [label="swap(1,8)"]
+	node_22774 [label="534
 867
 2_1"]
-	node_15427 -> node_15468 [label="corner(1,5)"]
-	node_15473 [label="567
+	node_22733 -> node_22774 [label="corner(1,5)"]
+	node_22779 [label="567
 132
 4_8"]
-	node_15428 -> node_15473 [label="corner(4,7)"]
-	node_15475 [label="532
+	node_22734 -> node_22779 [label="corner(4,7)"]
+	node_22781 [label="532
 167
 4_8"]
-	node_15431 -> node_15475 [label="swap(7,2)"]
-	node_15508 [label="864
+	node_22737 -> node_22781 [label="swap(7,2)"]
+	node_22814 [label="864
 137
 2_5"]
-	node_15463 -> node_15508 [label="swap(1,8)"]
-	node_15512 [label="564
+	node_22769 -> node_22814 [label="swap(1,8)"]
+	node_22818 [label="564
 837
 2_1"]
-	node_15463 -> node_15512 [label="corner(1,5)"]
-	node_15515 [label="562
+	node_22769 -> node_22818 [label="corner(1,5)"]
+	node_22821 [label="562
 137
 4_8"]
-	node_15473 -> node_15515 [label="swap(7,2)"]
-	node_15525 [label="534
+	node_22779 -> node_22821 [label="swap(7,2)"]
+	node_22831 [label="534
 167
 2_8"]
-	node_15475 -> node_15525 [label="corner(2,4)"]
-	node_15555 [label="564
+	node_22781 -> node_22831 [label="corner(2,4)"]
+	node_22861 [label="564
 137
 2_8"]
-	node_15515 -> node_15555 [label="corner(2,4)"]
+	node_22821 -> node_22861 [label="corner(2,4)"]
 	node_1 [label="134
 862
 7_5"]
-	node_15574 [label="834
+	node_22880 [label="834
 162
 7_5"]
-	node_1 -> node_15574 [label="swap(1,8)"]
-	node_15575 [label="164
+	node_1 -> node_22880 [label="swap(1,8)"]
+	node_22881 [label="164
 832
 7_5"]
-	node_1 -> node_15575 [label="swap(3,6)"]
-	node_15578 [label="534
+	node_1 -> node_22881 [label="swap(3,6)"]
+	node_22884 [label="534
 862
 7_1"]
-	node_1 -> node_15578 [label="corner(1,5)"]
-	node_15579 [label="137
+	node_1 -> node_22884 [label="corner(1,5)"]
+	node_22885 [label="137
 862
 4_5"]
-	node_1 -> node_15579 [label="corner(4,7)"]
-	node_15580 [label="864
+	node_1 -> node_22885 [label="corner(4,7)"]
+	node_22886 [label="864
 132
 7_5"]
-	node_15575 -> node_15580 [label="swap(1,8)"]
-	node_15584 [label="564
+	node_22881 -> node_22886 [label="swap(1,8)"]
+	node_22890 [label="564
 832
 7_1"]
-	node_15575 -> node_15584 [label="corner(1,5)"]
-	node_15585 [label="167
+	node_22881 -> node_22890 [label="corner(1,5)"]
+	node_22891 [label="167
 832
 4_5"]
-	node_15575 -> node_15585 [label="corner(4,7)"]
-	node_15590 [label="534
+	node_22881 -> node_22891 [label="corner(4,7)"]
+	node_22896 [label="534
 162
 7_8"]
-	node_15574 -> node_15590 [label="corner(8,5)"]
-	node_15591 [label="837
+	node_22880 -> node_22896 [label="corner(8,5)"]
+	node_22897 [label="837
 162
 4_5"]
-	node_15574 -> node_15591 [label="corner(4,7)"]
-	node_15594 [label="132
+	node_22880 -> node_22897 [label="corner(4,7)"]
+	node_22900 [label="132
 867
 4_5"]
-	node_15579 -> node_15594 [label="swap(7,2)"]
-	node_15598 [label="537
+	node_22885 -> node_22900 [label="swap(7,2)"]
+	node_22904 [label="537
 862
 4_1"]
-	node_15579 -> node_15598 [label="corner(1,5)"]
-	node_15600 [label="564
+	node_22885 -> node_22904 [label="corner(1,5)"]
+	node_22910 [label="564
 132
 7_8"]
-	node_15590 -> node_15600 [label="swap(3,6)"]
-	node_15603 [label="537
+	node_22896 -> node_22910 [label="swap(3,6)"]
+	node_22913 [label="537
 162
 4_8"]
-	node_15590 -> node_15603 [label="corner(4,7)"]
-	node_15604 [label="832
+	node_22896 -> node_22913 [label="corner(4,7)"]
+	node_22914 [label="832
 167
 4_5"]
-	node_15594 -> node_15604 [label="swap(1,8)"]
-	node_15605 [label="162
+	node_22900 -> node_22914 [label="swap(1,8)"]
+	node_22915 [label="162
 837
 4_5"]
-	node_15594 -> node_15605 [label="swap(3,6)"]
-	node_15610 [label="532
+	node_22900 -> node_22915 [label="swap(3,6)"]
+	node_22920 [label="532
 867
 4_1"]
-	node_15594 -> node_15610 [label="corner(1,5)"]
-	node_15611 [label="134
+	node_22900 -> node_22920 [label="corner(1,5)"]
+	node_22921 [label="134
 867
 2_5"]
-	node_15594 -> node_15611 [label="corner(2,4)"]
-	node_15617 [label="867
+	node_22900 -> node_22921 [label="corner(2,4)"]
+	node_22927 [label="867
 132
 4_5"]
-	node_15580 -> node_15617 [label="corner(4,7)"]
-	node_15624 [label="567
+	node_22886 -> node_22927 [label="corner(4,7)"]
+	node_22934 [label="567
 832
 4_1"]
-	node_15585 -> node_15624 [label="corner(1,5)"]
-	node_15629 [label="567
+	node_22891 -> node_22934 [label="corner(1,5)"]
+	node_22957 [label="567
 132
 4_8"]
-	node_15600 -> node_15629 [label="corner(4,7)"]
-	node_15630 [label="862
+	node_22910 -> node_22957 [label="corner(4,7)"]
+	node_22958 [label="862
 137
 4_5"]
-	node_15605 -> node_15630 [label="swap(1,8)"]
-	node_15636 [label="562
+	node_22915 -> node_22958 [label="swap(1,8)"]
+	node_22964 [label="562
 837
 4_1"]
-	node_15605 -> node_15636 [label="corner(1,5)"]
-	node_15637 [label="164
+	node_22915 -> node_22964 [label="corner(1,5)"]
+	node_22965 [label="164
 837
 2_5"]
-	node_15605 -> node_15637 [label="corner(2,4)"]
-	node_15651 [label="532
+	node_22915 -> node_22965 [label="corner(2,4)"]
+	node_22967 [label="532
 167
 4_8"]
-	node_15603 -> node_15651 [label="swap(7,2)"]
-	node_15663 [label="834
+	node_22913 -> node_22967 [label="swap(7,2)"]
+	node_22979 [label="834
 167
 2_5"]
-	node_15604 -> node_15663 [label="corner(2,4)"]
-	node_15668 [label="534
+	node_22914 -> node_22979 [label="corner(2,4)"]
+	node_22984 [label="534
 867
 2_1"]
-	node_15611 -> node_15668 [label="corner(1,5)"]
-	node_15670 [label="562
+	node_22921 -> node_22984 [label="corner(1,5)"]
+	node_23006 [label="562
 137
 4_8"]
-	node_15651 -> node_15670 [label="swap(3,6)"]
-	node_15675 [label="534
+	node_22967 -> node_23006 [label="swap(3,6)"]
+	node_23011 [label="534
 167
 2_8"]
-	node_15651 -> node_15675 [label="corner(2,4)"]
-	node_15701 [label="864
+	node_22967 -> node_23011 [label="corner(2,4)"]
+	node_23025 [label="864
 137
 2_5"]
-	node_15630 -> node_15701 [label="corner(2,4)"]
-	node_15706 [label="564
+	node_22958 -> node_23025 [label="corner(2,4)"]
+	node_23030 [label="564
 837
 2_1"]
-	node_15637 -> node_15706 [label="corner(1,5)"]
-	node_15713 [label="564
+	node_22965 -> node_23030 [label="corner(1,5)"]
+	node_23053 [label="564
 137
 2_8"]
-	node_15670 -> node_15713 [label="corner(2,4)"]
+	node_23006 -> node_23053 [label="corner(2,4)"]
 	node_1 [label="134
 862
 7_5"]
-	node_23072 [label="834
+	node_30378 [label="834
 162
 7_5"]
-	node_1 -> node_23072 [label="swap(1,8)"]
-	node_23073 [label="164
+	node_1 -> node_30378 [label="swap(1,8)"]
+	node_30379 [label="164
 832
 7_5"]
-	node_1 -> node_23073 [label="swap(3,6)"]
-	node_23076 [label="534
+	node_1 -> node_30379 [label="swap(3,6)"]
+	node_30382 [label="534
 862
 7_1"]
-	node_1 -> node_23076 [label="corner(1,5)"]
-	node_23077 [label="137
+	node_1 -> node_30382 [label="corner(1,5)"]
+	node_30383 [label="137
 862
 4_5"]
-	node_1 -> node_23077 [label="corner(4,7)"]
-	node_23079 [label="864
+	node_1 -> node_30383 [label="corner(4,7)"]
+	node_30385 [label="864
 132
 7_5"]
-	node_23072 -> node_23079 [label="swap(3,6)"]
-	node_23082 [label="534
+	node_30378 -> node_30385 [label="swap(3,6)"]
+	node_30388 [label="534
 162
 7_8"]
-	node_23072 -> node_23082 [label="corner(8,5)"]
-	node_23083 [label="837
+	node_30378 -> node_30388 [label="corner(8,5)"]
+	node_30389 [label="837
 162
 4_5"]
-	node_23072 -> node_23083 [label="corner(4,7)"]
-	node_23084 [label="564
+	node_30378 -> node_30389 [label="corner(4,7)"]
+	node_30390 [label="564
 832
 7_1"]
-	node_23076 -> node_23084 [label="swap(3,6)"]
-	node_23087 [label="537
+	node_30382 -> node_30390 [label="swap(3,6)"]
+	node_30393 [label="537
 862
 4_1"]
-	node_23076 -> node_23087 [label="corner(4,7)"]
-	node_23093 [label="167
+	node_30382 -> node_30393 [label="corner(4,7)"]
+	node_30399 [label="167
 832
 4_5"]
-	node_23073 -> node_23093 [label="corner(4,7)"]
-	node_23096 [label="132
+	node_30379 -> node_30399 [label="corner(4,7)"]
+	node_30402 [label="132
 867
 4_5"]
-	node_23077 -> node_23096 [label="swap(7,2)"]
-	node_23106 [label="564
+	node_30383 -> node_30402 [label="swap(7,2)"]
+	node_30412 [label="564
 132
 7_8"]
-	node_23079 -> node_23106 [label="corner(8,5)"]
-	node_23107 [label="867
+	node_30385 -> node_30412 [label="corner(8,5)"]
+	node_30413 [label="867
 132
 4_5"]
-	node_23079 -> node_23107 [label="corner(4,7)"]
-	node_23110 [label="832
+	node_30385 -> node_30413 [label="corner(4,7)"]
+	node_30416 [label="832
 167
 4_5"]
-	node_23083 -> node_23110 [label="swap(7,2)"]
-	node_23114 [label="537
+	node_30389 -> node_30416 [label="swap(7,2)"]
+	node_30420 [label="537
 162
 4_8"]
-	node_23083 -> node_23114 [label="corner(8,5)"]
-	node_23119 [label="567
+	node_30389 -> node_30420 [label="corner(8,5)"]
+	node_30425 [label="567
 832
 4_1"]
-	node_23084 -> node_23119 [label="corner(4,7)"]
-	node_23121 [label="532
+	node_30390 -> node_30425 [label="corner(4,7)"]
+	node_30427 [label="532
 867
 4_1"]
-	node_23087 -> node_23121 [label="swap(7,2)"]
-	node_23132 [label="162
+	node_30393 -> node_30427 [label="swap(7,2)"]
+	node_30438 [label="162
 837
 4_5"]
-	node_23093 -> node_23132 [label="swap(7,2)"]
-	node_23145 [label="134
+	node_30399 -> node_30438 [label="swap(7,2)"]
+	node_30451 [label="134
 867
 2_5"]
-	node_23096 -> node_23145 [label="corner(2,4)"]
-	node_23148 [label="862
+	node_30402 -> node_30451 [label="corner(2,4)"]
+	node_30454 [label="862
 137
 4_5"]
-	node_23107 -> node_23148 [label="swap(7,2)"]
-	node_23152 [label="567
+	node_30413 -> node_30454 [label="swap(7,2)"]
+	node_30458 [label="567
 132
 4_8"]
-	node_23107 -> node_23152 [label="corner(8,5)"]
-	node_23160 [label="532
+	node_30413 -> node_30458 [label="corner(8,5)"]
+	node_30466 [label="532
 167
 4_8"]
-	node_23110 -> node_23160 [label="corner(8,5)"]
-	node_23161 [label="834
+	node_30416 -> node_30466 [label="corner(8,5)"]
+	node_30467 [label="834
 167
 2_5"]
-	node_23110 -> node_23161 [label="corner(2,4)"]
-	node_23163 [label="562
+	node_30416 -> node_30467 [label="corner(2,4)"]
+	node_30469 [label="562
 837
 4_1"]
-	node_23119 -> node_23163 [label="swap(7,2)"]
-	node_23173 [label="534
+	node_30425 -> node_30469 [label="swap(7,2)"]
+	node_30479 [label="534
 867
 2_1"]
-	node_23121 -> node_23173 [label="corner(2,4)"]
-	node_23191 [label="164
+	node_30427 -> node_30479 [label="corner(2,4)"]
+	node_30497 [label="164
 837
 2_5"]
-	node_23132 -> node_23191 [label="corner(2,4)"]
-	node_23204 [label="562
+	node_30438 -> node_30497 [label="corner(2,4)"]
+	node_30510 [label="562
 137
 4_8"]
-	node_23148 -> node_23204 [label="corner(8,5)"]
-	node_23205 [label="864
+	node_30454 -> node_30510 [label="corner(8,5)"]
+	node_30511 [label="864
 137
 2_5"]
-	node_23148 -> node_23205 [label="corner(2,4)"]
-	node_23210 [label="534
+	node_30454 -> node_30511 [label="corner(2,4)"]
+	node_30516 [label="534
 167
 2_8"]
-	node_23161 -> node_23210 [label="corner(8,5)"]
-	node_23217 [label="564
+	node_30467 -> node_30516 [label="corner(8,5)"]
+	node_30523 [label="564
 837
 2_1"]
-	node_23163 -> node_23217 [label="corner(2,4)"]
-	node_23244 [label="564
+	node_30469 -> node_30523 [label="corner(2,4)"]
+	node_30550 [label="564
 137
 2_8"]
-	node_23205 -> node_23244 [label="corner(8,5)"]
+	node_30511 -> node_30550 [label="corner(8,5)"]
 	node_1 [label="134
 862
 7_5"]
-	node_23264 [label="834
+	node_30570 [label="834
 162
 7_5"]
-	node_1 -> node_23264 [label="swap(1,8)"]
-	node_23265 [label="164
+	node_1 -> node_30570 [label="swap(1,8)"]
+	node_30571 [label="164
 832
 7_5"]
-	node_1 -> node_23265 [label="swap(3,6)"]
-	node_23268 [label="534
+	node_1 -> node_30571 [label="swap(3,6)"]
+	node_30574 [label="534
 862
 7_1"]
-	node_1 -> node_23268 [label="corner(1,5)"]
-	node_23269 [label="137
+	node_1 -> node_30574 [label="corner(1,5)"]
+	node_30575 [label="137
 862
 4_5"]
-	node_1 -> node_23269 [label="corner(4,7)"]
-	node_23270 [label="564
+	node_1 -> node_30575 [label="corner(4,7)"]
+	node_30576 [label="564
 832
 7_1"]
-	node_23268 -> node_23270 [label="swap(3,6)"]
-	node_23273 [label="537
+	node_30574 -> node_30576 [label="swap(3,6)"]
+	node_30579 [label="537
 862
 4_1"]
-	node_23268 -> node_23273 [label="corner(4,7)"]
-	node_23275 [label="864
+	node_30574 -> node_30579 [label="corner(4,7)"]
+	node_30581 [label="864
 132
 7_5"]
-	node_23264 -> node_23275 [label="swap(3,6)"]
-	node_23278 [label="534
+	node_30570 -> node_30581 [label="swap(3,6)"]
+	node_30584 [label="534
 162
 7_8"]
-	node_23264 -> node_23278 [label="corner(8,5)"]
-	node_23279 [label="837
+	node_30570 -> node_30584 [label="corner(8,5)"]
+	node_30585 [label="837
 162
 4_5"]
-	node_23264 -> node_23279 [label="corner(4,7)"]
-	node_23283 [label="567
-832
-4_1"]
-	node_23270 -> node_23283 [label="corner(4,7)"]
-	node_23285 [label="532
-867
-4_1"]
-	node_23273 -> node_23285 [label="swap(7,2)"]
-	node_23295 [label="167
+	node_30570 -> node_30585 [label="corner(4,7)"]
+	node_30591 [label="167
 832
 4_5"]
-	node_23265 -> node_23295 [label="corner(4,7)"]
-	node_23298 [label="132
+	node_30571 -> node_30591 [label="corner(4,7)"]
+	node_30594 [label="132
 867
 4_5"]
-	node_23269 -> node_23298 [label="swap(7,2)"]
-	node_23308 [label="564
+	node_30575 -> node_30594 [label="swap(7,2)"]
+	node_30603 [label="567
+832
+4_1"]
+	node_30576 -> node_30603 [label="corner(4,7)"]
+	node_30605 [label="532
+867
+4_1"]
+	node_30579 -> node_30605 [label="swap(7,2)"]
+	node_30614 [label="564
 132
 7_8"]
-	node_23275 -> node_23308 [label="corner(8,5)"]
-	node_23309 [label="867
+	node_30581 -> node_30614 [label="corner(8,5)"]
+	node_30615 [label="867
 132
 4_5"]
-	node_23275 -> node_23309 [label="corner(4,7)"]
-	node_23312 [label="832
+	node_30581 -> node_30615 [label="corner(4,7)"]
+	node_30618 [label="832
 167
 4_5"]
-	node_23279 -> node_23312 [label="swap(7,2)"]
-	node_23316 [label="537
+	node_30585 -> node_30618 [label="swap(7,2)"]
+	node_30622 [label="537
 162
 4_8"]
-	node_23279 -> node_23316 [label="corner(8,5)"]
-	node_23319 [label="562
+	node_30585 -> node_30622 [label="corner(8,5)"]
+	node_30626 [label="162
+837
+4_5"]
+	node_30591 -> node_30626 [label="swap(7,2)"]
+	node_30643 [label="134
+867
+2_5"]
+	node_30594 -> node_30643 [label="corner(2,4)"]
+	node_30645 [label="562
 837
 4_1"]
-	node_23283 -> node_23319 [label="swap(7,2)"]
-	node_23329 [label="534
+	node_30603 -> node_30645 [label="swap(7,2)"]
+	node_30655 [label="534
 867
 2_1"]
-	node_23285 -> node_23329 [label="corner(2,4)"]
-	node_23330 [label="564
-837
-2_1"]
-	node_23329 -> node_23330 [label="swap(3,6)"]
-	node_23332 [label="134
-867
-2_5"]
-	node_23329 -> node_23332 [label="corner(5,1)"]
-	node_23336 [label="162
-837
-4_5"]
-	node_23295 -> node_23336 [label="swap(7,2)"]
-	node_23344 [label="862
+	node_30605 -> node_30655 [label="corner(2,4)"]
+	node_30658 [label="862
 137
 4_5"]
-	node_23309 -> node_23344 [label="swap(7,2)"]
-	node_23348 [label="567
+	node_30615 -> node_30658 [label="swap(7,2)"]
+	node_30662 [label="567
 132
 4_8"]
-	node_23309 -> node_23348 [label="corner(8,5)"]
-	node_23352 [label="164
+	node_30615 -> node_30662 [label="corner(8,5)"]
+	node_30664 [label="834
+167
+2_5"]
+	node_30643 -> node_30664 [label="swap(1,8)"]
+	node_30665 [label="164
 837
 2_5"]
-	node_23330 -> node_23352 [label="corner(5,1)"]
-	node_23365 [label="134
-867
-2_5"]
-	node_23298 -> node_23365 [label="corner(2,4)"]
-	node_23366 [label="834
+	node_30643 -> node_30665 [label="swap(3,6)"]
+	node_30676 [label="532
 167
-2_5"]
-	node_23365 -> node_23366 [label="swap(1,8)"]
-	node_23367 [label="164
+4_8"]
+	node_30618 -> node_30676 [label="corner(8,5)"]
+	node_30696 [label="564
 837
-2_5"]
-	node_23365 -> node_23367 [label="swap(3,6)"]
-	node_23373 [label="864
+2_1"]
+	node_30655 -> node_30696 [label="swap(3,6)"]
+	node_30701 [label="864
 137
 2_5"]
-	node_23366 -> node_23373 [label="swap(3,6)"]
-	node_23376 [label="534
+	node_30664 -> node_30701 [label="swap(3,6)"]
+	node_30704 [label="534
 167
 2_8"]
-	node_23366 -> node_23376 [label="corner(8,5)"]
-	node_23384 [label="532
-167
+	node_30664 -> node_30704 [label="corner(8,5)"]
+	node_30724 [label="562
+137
 4_8"]
-	node_23312 -> node_23384 [label="corner(8,5)"]
-	node_23402 [label="564
+	node_30658 -> node_30724 [label="corner(8,5)"]
+	node_30746 [label="564
 137
 2_8"]
-	node_23373 -> node_23402 [label="corner(8,5)"]
-	node_23428 [label="562
-137
-4_8"]
-	node_23344 -> node_23428 [label="corner(8,5)"]
+	node_30701 -> node_30746 [label="corner(8,5)"]
 }

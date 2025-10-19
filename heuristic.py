@@ -35,4 +35,4 @@ class Heuristic:
                     continue
                 gi, gj = goal_pos[v]
                 total += abs(i - gi) + abs(j - gj)
-        return total // 2 
+        return float(total) / 8.0
